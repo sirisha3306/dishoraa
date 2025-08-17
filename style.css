@@ -394,7 +394,7 @@ header {
 }
 
 .modal-content ol li:before {
-  content: "🌱";
+  content: "👉";
   position: absolute;
   left: 0;
 }
