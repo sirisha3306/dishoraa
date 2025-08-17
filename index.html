@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dishoraa– 15-Minute Recipes Only</title>
+  <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Dishoraa 🍴</div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showSection('home-section')">Home</a></li>
+      <li><a href="#" onclick="showSection('filters')">Categories</a></li>
+      <li><a href="#" onclick="showSection('facts-hacks-section')">Facts & Hacks</a></li>
+      <li><a href="#" onclick="showSection('contact-section')">Contact</a></li>
+      <li><a href="#" onclick="showSection('about-section')">About</a></li>
+    </ul>
+  </nav>
+
+  <section id="home-section" class="hero-section content-section">
+    <div class="hero-text">
+      <h1>Cook Fast. Feel Good. Eat Happy.</h1>
+      <p>Discover 15-minute recipes that bring big flavor in little time — quick to cook, easy to love.</p>
+      <div class="hero-buttons">
+        <button class="cta-btn">🍳 Cook in 15 Minutes!</button>
+      </div>
+    </div>
+    <div class="hero-image">
+    <img src="images/mainimage.jpg" alt="Delicious food">
+  </div>
+  </section>
+  <section class="tagline-section">
+    <div class="logo-container">
+    <div class="logo-large">Dishoraa 🍽️</div>
+    <p>Flavors in a flash—satisfy your cravings before they fade.</p>
+  </div>
+  </section>
+    <section id="about-section" class="info-section content-section" style="display:none; background-color: #f9f9f9;">
+    <h2>About Dishoraa</h2>
+    <p>
+Welcome to <strong>Dishoraa!</strong> – your cozy corner for quick bites!  
+We’re here to make cooking less scary and more fun, with tasty little recipes that take <em>just 15 minutes</em>.  
+Perfect for students, beginners, or anyone who gets hungry faster than their food can cook. 🍳💨  
+No fancy chef hats, no stress – just real food, real quick, and a sprinkle of happiness! 🥗💛
+</p>
+<p style="margin-top:10px; font-style:italic; color:black;">
+Sprinkled with joy & Signed by Sirisha!
+</p>
+
+
+  </section>
+ <section id="facts-hacks-section" class="info-section content-section" style="display:none;">
+  <div class="fh-top-bar">
+    <h2 class="fh-title">🍳 Cooking Facts & Hacks</h2>
+    <div class="fh-toggle-container">
+      <span id="fh-label-left" class="fh-label active">Facts</span>
+      <label class="switch">
+        <input type="checkbox" id="fh-toggle">
+        <span class="slider round"></span>
+      </label>
+      <span id="fh-label-right" class="fh-label">Hacks</span>
+    </div>
+  </div>
+
+  <div id="facts-hacks-content" class="facts-hacks-content">
+    <!-- Cards will be inserted here by JS -->
+  </div>
+</section>
+
+
+
+<section id="contact-section" class="info-section content-section" style="display: none; background-color: #f9f9f9; padding: 40px 20px;">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+    <h2>Contact Us</h2>
+    <p>
+Got a yummy idea, a little feedback, or a recipe you’re craving? 🍲💡  
+Don’t be shy – drop me a note and let’s cook up something fun together! ✨  
+</p>
+
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sirishayarru33@gmail.com&su=Feedback&body=Hello%20Dishoraa%20Team"
+       target="_blank"
+       style="display: inline-block; padding: 12px 24px; background-color: #ff6347; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 20px;">
+      📬 Open in Gmail
+    </a>
+  </div>
+</section>
+<div id="filters-wrapper" class="filter-search-container content-section" style="display: none;">
+  <div id="filters" class="filter-buttons">
+    <button data-category="Recent">Recently Added</button>
+    <button data-category="Breakfast">Breakfast</button>
+    <button data-category="Snack">Snack</button>
+    <button data-category="Savory">Savory</button>
+    <button data-category="Sweet">Sweet</button>
+  </div>
+  <div id="search-bar">
+  <input type="text" id="search-input" placeholder="Search for a recipe...">
+  <i class="fas fa-search search-icon"></i>
+</div>
+</div>
+
+
+  <section id="recipes" class="recipe-container">
+    <!-- Recipe cards will be loaded here dynamically -->
+  </section>
+  <script>
+  function showSection(sectionId) {
+    // Hide all content sections
+    const allSections = document.querySelectorAll('.content-section');
+    allSections.forEach(sec => sec.style.display = 'none');
+
+    // Hide the recipes container and filters
+    document.getElementById('recipes').style.display = 'none';
+    document.getElementById('filters-wrapper').style.display = 'none';
+
+    // Show the requested section
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.style.display = sectionId === 'home-section' ? 'flex' : 'block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Special case for filters section
+      if (sectionId === 'filters') {
+        document.querySelector('[data-category="Recent"]').click();
+        document.getElementById("search-bar").style.display = "block";
+
+      }
+      else{
+        document.getElementById("search-bar").style.display = "none";
+
+      }
+    }
+  }
+
+
+  // Optional: Show home by default on load
+  window.onload = () => {
+    showSection('home-section');
+  };
+</script>
+  <script src="recipes.js"></script>
+  <script src="facts-hacks.js"></script>
+  <script src="main.js"></script>
+  </div>
+  </script>
+  <footer>
+    Today's quote: <span id="daily-quote"></span>
+  </footer>
+  <footer class="site-footer">
+  <p>Created by Sirisha &copy; 2024</p>
+</footer>
+</body>
+</html>
